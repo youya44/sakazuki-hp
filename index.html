@@ -18,6 +18,23 @@
 </head>
 <body>
 
+  <!-- Splash Screen -->
+  <div class="splash" id="splash">
+    <div class="splash-logo">
+      <img src="assets/images/logo.webp" alt="SAKAZUKI">
+    </div>
+  </div>
+  <script>
+    setTimeout(function() {
+      var s = document.getElementById('splash');
+      if (s) s.classList.add('splash-hide');
+    }, 2500);
+    setTimeout(function() {
+      var s = document.getElementById('splash');
+      if (s) s.remove();
+    }, 3600);
+  </script>
+
   <!-- Header -->
   <header class="header" id="header">
     <a href="/" class="header-logo">
@@ -44,12 +61,6 @@
     </div>
   </nav>
 
-  <!-- Decorative Elements -->
-  <div class="deco deco-gradient-1"></div>
-  <div class="deco deco-gradient-2"></div>
-  <div class="deco deco-outline-1"></div>
-  <div class="deco deco-outline-2"></div>
-
   <!-- Fixed Background Video -->
   <video class="bg-video-fixed" autoplay muted loop playsinline>
     <source src="assets/bg-video.mp4" type="video/mp4">
@@ -69,17 +80,22 @@
     <!-- ABOUT -->
     <section class="section section-about" id="about">
       <div class="section-inner">
-        <div class="section-card">
-          <div class="section-header">
-            <h2 class="section-title-en">ABOUT</h2>
-            <p class="section-title-ja">私たちについて</p>
-          </div>
-          <div class="about-content">
-            <p class="about-catch">世の中に、余白のある人生を。</p>
-            <div class="about-text">
-              <p>デジタル化社会の昨今、毎日何かに追われ、<br>また、追わなくていいものまで追ってしまう。<br>無意識の内に、無駄な時間をつくるまいと、<br>何かで余白を埋めては欲求を満たしている。</p>
-              <p>本来、人間は余白があることで様々な想像をして<br>成長してきました。</p>
-              <p>私たちは、その余白をデザインの力で再発見して欲しいと願っています。</p>
+        <div class="section-deco-wrap">
+          <div class="section-deco deco-about-tr"><img src="assets/images/deco-1.webp" alt=""></div>
+          <div class="section-deco deco-about-bl"><img src="assets/images/deco-2.webp" alt=""></div>
+          <div class="section-deco deco-about-br"><img src="assets/images/deco-3.webp" alt=""></div>
+          <div class="section-card">
+            <div class="section-header">
+              <h2 class="section-title-en">ABOUT</h2>
+              <p class="section-title-ja">私たちについて</p>
+            </div>
+            <div class="about-content">
+              <p class="about-catch">世の中に、余白のある人生を。</p>
+              <div class="about-text">
+                <p>デジタル化社会の昨今、毎日何かに追われ、<br>また、追わなくていいものまで追ってしまう。<br>無意識の内に、無駄な時間をつくるまいと、<br>何かで余白を埋めては欲求を満たしている。</p>
+                <p>本来、人間は余白があることで様々な想像をして<br>成長してきました。</p>
+                <p>私たちは、その余白をデザインの力で再発見して欲しいと願っています。</p>
+              </div>
             </div>
           </div>
         </div>
@@ -93,25 +109,28 @@
           <h2 class="section-title-en">BUSINESS</h2>
           <p class="section-title-ja">事業内容</p>
         </div>
-        <div class="business-cards">
-          <a href="creative.html" class="business-card">
-            <div class="business-card-img">
-              <img src="assets/images/work1.webp" alt="制作事業">
-            </div>
-            <div class="business-card-overlay">
-              <span class="business-card-en">CREATIVE</span>
-              <span class="business-card-ja">制作事業</span>
-            </div>
-          </a>
-          <a href="event.html" class="business-card">
-            <div class="business-card-img">
-              <img src="assets/images/work2.webp" alt="イベント事業">
-            </div>
-            <div class="business-card-overlay">
-              <span class="business-card-en">EVENT</span>
-              <span class="business-card-ja">イベント事業</span>
-            </div>
-          </a>
+        <div class="section-deco-wrap">
+          <div class="section-deco deco-event-br"><img src="assets/images/deco-4.webp" alt=""></div>
+          <div class="business-cards">
+            <a href="creative.html" class="business-card">
+              <div class="business-card-img">
+                <img src="assets/images/work1.webp" alt="制作事業">
+              </div>
+              <div class="business-card-overlay">
+                <span class="business-card-en">CREATIVE</span>
+                <span class="business-card-ja">制作事業</span>
+              </div>
+            </a>
+            <a href="event.html" class="business-card">
+              <div class="business-card-img">
+                <img src="assets/images/work2.webp" alt="イベント事業">
+              </div>
+              <div class="business-card-overlay">
+                <span class="business-card-en">EVENT</span>
+                <span class="business-card-ja">イベント事業</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -174,31 +193,39 @@
     <!-- NEWS -->
     <section class="section section-news" id="news">
       <div class="section-inner">
-        <div class="section-header">
-          <h2 class="section-title-en">NEWS</h2>
-          <p class="section-title-ja">お知らせ</p>
-        </div>
-        <div class="news-list">
-          <a href="news/intern-2024.html" class="news-item">
-            <time class="news-date">2024.08.22</time>
-            <p class="news-title">令和6年度夏季インターンシッププログラム開催しました。</p>
-          </a>
-          <a href="news/security-action.html" class="news-item">
-            <time class="news-date">2023.10.31</time>
-            <p class="news-title">セキュリティアクション自己宣言一つ星を宣言しました。</p>
-          </a>
-          <a href="news/wellbeing-sdgs.html" class="news-item">
-            <time class="news-date">2023.10.31</time>
-            <p class="news-title">福岡市Well-Being＆SDGs登録制度に登録されました。</p>
-          </a>
-          <a href="news/sdgs-fukuoka.html" class="news-item">
-            <time class="news-date">2024.01.29</time>
-            <p class="news-title">福岡県SDGs登録制度の登録事業者として認定されました。</p>
-          </a>
-          <a href="news/hp-renewal.html" class="news-item">
-            <time class="news-date">2021.08.04</time>
-            <p class="news-title">HPをリニューアルしました。</p>
-          </a>
+        <div class="section-deco-wrap">
+          <div class="section-deco deco-news-l"><img src="assets/images/deco-5.webp" alt=""></div>
+          <div class="section-header">
+            <h2 class="section-title-en">NEWS</h2>
+            <p class="section-title-ja">お知らせ</p>
+          </div>
+          <div class="news-list">
+            <a href="news/intern-2024.html" class="news-item">
+              <time class="news-date">2024.08.22</time>
+              <p class="news-title">令和6年度夏季インターンシッププログラム開催しました。</p>
+            </a>
+            <a href="news/security-action.html" class="news-item">
+              <time class="news-date">2023.10.31</time>
+              <p class="news-title">セキュリティアクション自己宣言一つ星を宣言しました。</p>
+            </a>
+            <a href="news/wellbeing-sdgs.html" class="news-item">
+              <time class="news-date">2023.10.31</time>
+              <p class="news-title">福岡市Well-Being＆SDGs登録制度に登録されました。</p>
+            </a>
+            <a href="news/sdgs-fukuoka.html" class="news-item">
+              <time class="news-date">2024.01.29</time>
+              <p class="news-title">福岡県SDGs登録制度の登録事業者として認定されました。</p>
+            </a>
+            <a href="news/hp-renewal.html" class="news-item">
+              <time class="news-date">2021.08.04</time>
+              <p class="news-title">HPをリニューアルしました。</p>
+            </a>
+          </div>
+          <div class="section-more">
+            <a href="news-all.html" class="btn-more">
+              VIEW MORE <span class="btn-more-circle"><span class="material-symbols-outlined">trending_flat</span></span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

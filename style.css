@@ -2,6 +2,41 @@
    SAKAZUKI Corporate Site - style.css
    ============================================= */
 
+/* --- Splash Screen --- */
+.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+.splash.splash-hide {
+  opacity: 0;
+}
+
+.splash-logo {
+  opacity: 0;
+  animation: splashLogoIn 1.2s ease 0.3s forwards;
+}
+
+.splash-logo img {
+  width: 200px;
+  height: auto;
+}
+
+@keyframes splashLogoIn {
+  to {
+    opacity: 1;
+  }
+}
+
 /* --- Reset & Base --- */
 *, *::before, *::after {
   margin: 0;
@@ -43,58 +78,6 @@ button {
 input, textarea {
   font-family: inherit;
   font-size: inherit;
-}
-
-/* --- Background (removed, using video instead) --- */
-
-/* --- Decorative floating elements --- */
-.deco {
-  position: fixed;
-  border-radius: 24px;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.deco-gradient-1 {
-  width: 200px;
-  height: 300px;
-  bottom: 10%;
-  left: -60px;
-  background: linear-gradient(135deg, #00e5ff, #ff6ec7, #ffab40);
-  opacity: 0.7;
-  border-radius: 24px;
-  transform: rotate(-5deg);
-}
-
-.deco-gradient-2 {
-  width: 180px;
-  height: 260px;
-  bottom: 20%;
-  right: -40px;
-  background: linear-gradient(135deg, #7c4dff, #00bcd4, #ffab40);
-  opacity: 0.5;
-  border-radius: 24px;
-  transform: rotate(10deg);
-}
-
-.deco-outline-1 {
-  width: 180px;
-  height: 180px;
-  top: 60%;
-  right: -30px;
-  border: 2px solid rgba(200, 200, 200, 0.3);
-  border-radius: 24px;
-  transform: rotate(15deg);
-}
-
-.deco-outline-2 {
-  width: 160px;
-  height: 160px;
-  top: 30%;
-  left: -40px;
-  border: 2px solid rgba(200, 200, 200, 0.25);
-  border-radius: 24px;
-  transform: rotate(-10deg);
 }
 
 /* --- Header --- */
@@ -306,12 +289,62 @@ input, textarea {
 }
 
 .section-card {
-  background: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0) 100%);
   backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 80px;
   max-width: 900px;
   margin: 0 auto;
+}
+
+/* --- Section Decoration Images --- */
+.section-deco-wrap {
+  position: relative;
+}
+
+.section-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-deco img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ABOUT decorations */
+.deco-about-tr {
+  top: -60px;
+  right: -80px;
+  width: 220px;
+}
+
+.deco-about-bl {
+  bottom: -40px;
+  left: -100px;
+  width: 180px;
+}
+
+.deco-about-br {
+  bottom: -60px;
+  right: -100px;
+  width: 140px;
+}
+
+/* BUSINESS / EVENT decoration */
+.deco-event-br {
+  bottom: -80px;
+  right: -120px;
+  width: 300px;
+}
+
+/* NEWS decoration */
+.deco-news-l {
+  top: -40px;
+  left: -140px;
+  width: 220px;
 }
 
 .about-catch {
@@ -1297,6 +1330,12 @@ input, textarea {
   .service-card-left {
     flex: auto;
   }
+
+  .deco-about-tr { width: 160px; right: -40px; }
+  .deco-about-bl { width: 140px; left: -60px; }
+  .deco-about-br { width: 100px; right: -60px; }
+  .deco-event-br { width: 200px; right: -60px; }
+  .deco-news-l { width: 160px; left: -80px; }
 }
 
 @media (max-width: 768px) {
@@ -1368,7 +1407,7 @@ input, textarea {
     width: 100%;
   }
 
-  .deco {
+  .section-deco {
     display: none;
   }
 }
