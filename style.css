@@ -1,0 +1,884 @@
+/* =============================================
+   SAKAZUKI Corporate Site - style.css
+   ============================================= */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: "秀英角ゴシック金 M JIS2004", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: #333;
+  background: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* --- Background --- */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(210, 225, 245, 0.5) 0%,
+    rgba(235, 240, 250, 0.3) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(220, 235, 245, 0.4) 75%,
+    rgba(200, 220, 240, 0.5) 100%
+  );
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(200, 215, 240, 0.4), transparent),
+    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(210, 230, 250, 0.3), transparent),
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(225, 235, 245, 0.3), transparent);
+  z-index: -1;
+  pointer-events: none;
+  animation: bgShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes bgShift {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* --- Decorative floating elements --- */
+.deco {
+  position: fixed;
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.deco-gradient-1 {
+  width: 200px;
+  height: 300px;
+  bottom: 10%;
+  left: -60px;
+  background: linear-gradient(135deg, #00e5ff, #ff6ec7, #ffab40);
+  opacity: 0.7;
+  border-radius: 24px;
+  transform: rotate(-5deg);
+}
+
+.deco-gradient-2 {
+  width: 180px;
+  height: 260px;
+  bottom: 20%;
+  right: -40px;
+  background: linear-gradient(135deg, #7c4dff, #00bcd4, #ffab40);
+  opacity: 0.5;
+  border-radius: 24px;
+  transform: rotate(10deg);
+}
+
+.deco-outline-1 {
+  width: 180px;
+  height: 180px;
+  top: 60%;
+  right: -30px;
+  border: 2px solid rgba(200, 200, 200, 0.3);
+  border-radius: 24px;
+  transform: rotate(15deg);
+}
+
+.deco-outline-2 {
+  width: 160px;
+  height: 160px;
+  top: 30%;
+  left: -40px;
+  border: 2px solid rgba(200, 200, 200, 0.25);
+  border-radius: 24px;
+  transform: rotate(-10deg);
+}
+
+/* --- Header --- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.header-logo img {
+  height: 24px;
+  width: auto;
+}
+
+.header-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 32px;
+  padding: 4px 0;
+}
+
+.header-menu span {
+  display: block;
+  height: 2px;
+  background: #000;
+  border-radius: 1px;
+  transition: 0.3s;
+}
+
+.header-menu span:nth-child(1) { width: 100%; }
+.header-menu span:nth-child(2) { width: 70%; margin-left: auto; }
+.header-menu span:nth-child(3) { width: 85%; margin-left: auto; }
+
+.header-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.header-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.header-menu.active span:nth-child(3) {
+  width: 100%;
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* --- Nav Overlay --- */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+.nav-link {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s;
+}
+
+.nav-link:hover {
+  opacity: 0.6;
+}
+
+/* --- Section Common --- */
+.section {
+  position: relative;
+  padding: 120px 0;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-title-en {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.2;
+}
+
+.section-title-ja {
+  font-family: "秀英角ゴシック金 B JIS2004", "Hiragino Kaku Gothic ProN", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  margin-top: 4px;
+}
+
+.section-more {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 48px;
+}
+
+.btn-more {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Anuphan', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: 0.05em;
+}
+
+.btn-more-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid #000;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.btn-more:hover .btn-more-circle {
+  background: #000;
+  color: #fff;
+}
+
+/* --- Hero --- */
+.section-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 0;
+  padding-bottom: 120px;
+}
+
+.section-hero .section-inner {
+  max-width: 100%;
+  padding: 0 80px;
+}
+
+.hero-heading {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 96px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.3;
+}
+
+/* --- About --- */
+.section-about {
+  padding: 80px 0 120px;
+}
+
+.section-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 80px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-catch {
+  font-family: "秀英角ゴシック金 B JIS2004", "Hiragino Kaku Gothic ProN", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+
+.about-text {
+  text-align: center;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 2;
+  color: #000;
+  margin-bottom: 24px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Business --- */
+.business-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.business-card {
+  display: block;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 360px;
+}
+
+.business-card-img {
+  width: 100%;
+  height: 100%;
+}
+
+.business-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.business-card:hover .business-card-img img {
+  transform: scale(1.05);
+}
+
+.business-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.business-card-en {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.business-card-ja {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Service --- */
+.service-card {
+  display: flex;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.service-card-left {
+  flex: 0 0 50%;
+  padding: 32px;
+}
+
+.service-screenshot {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.service-card-right {
+  flex: 1;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.service-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00d4aa;
+  margin-bottom: 12px;
+}
+
+.service-pass-logo {
+  width: 200px;
+  margin-bottom: 24px;
+}
+
+.service-desc {
+  font-size: 14px;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 32px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #00d4aa;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 48px;
+  border-radius: 8px;
+  transition: 0.3s;
+  text-align: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background: #00b894;
+}
+
+/* --- Work --- */
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 4px;
+}
+
+.work-item {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.work-item:hover img {
+  transform: scale(1.05);
+}
+
+.work-item-large {
+  grid-row: 1 / 3;
+}
+
+/* --- News --- */
+.news-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.news-item {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s;
+}
+
+.news-item:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.news-item:hover {
+  opacity: 0.6;
+}
+
+.news-date {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  flex-shrink: 0;
+  width: 100px;
+}
+
+.news-title {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* --- Company --- */
+.company-layout {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.company-left {
+  flex: 1;
+}
+
+.company-right {
+  flex: 0 0 380px;
+}
+
+.company-logo-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 80px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
+}
+
+.company-logo-card img {
+  width: 280px;
+}
+
+.company-info {
+  margin-top: 16px;
+}
+
+.company-row {
+  display: flex;
+  gap: 32px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.company-row dt {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  flex-shrink: 0;
+  width: 80px;
+  letter-spacing: 0.15em;
+}
+
+.company-row dd {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* --- Contact --- */
+.section-contact {
+  padding-bottom: 80px;
+}
+
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Anuphan', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #e74c3c;
+  margin-left: 4px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  font-size: 15px;
+  color: #333;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.3);
+}
+
+.form-textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin: 24px 0 16px;
+  font-size: 14px;
+}
+
+.form-note {
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 32px;
+}
+
+.btn-send {
+  display: block;
+  width: 360px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1.5px solid #000;
+  background: transparent;
+  font-family: 'Anuphan', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-send:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* --- Footer --- */
+.footer {
+  padding: 80px 40px 40px;
+  margin-top: 80px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  width: 240px;
+  margin-bottom: 16px;
+}
+
+.footer-tagline {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.footer-sub {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 13px;
+  color: #666;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 80px;
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-col a {
+  font-family: 'Anuphan', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  transition: opacity 0.3s;
+}
+
+.footer-nav-col a:hover {
+  opacity: 0.6;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin-top: 80px;
+  padding-top: 20px;
+}
+
+/* --- Animations --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure text stays black even during fade */
+.section-title-en.fade-in,
+.section-title-ja.fade-in {
+  color: #000;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .hero-heading {
+    font-size: 64px;
+  }
+
+  .section-title-en {
+    font-size: 48px;
+  }
+
+  .about-catch {
+    font-size: 32px;
+  }
+
+  .company-layout {
+    flex-direction: column;
+  }
+
+  .company-right {
+    flex: auto;
+    width: 100%;
+  }
+
+  .service-card {
+    flex-direction: column;
+  }
+
+  .service-card-left {
+    flex: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-inner {
+    padding: 0 20px;
+  }
+
+  .header {
+    padding: 16px 20px;
+  }
+
+  .hero-heading {
+    font-size: 40px;
+  }
+
+  .section-title-en {
+    font-size: 36px;
+  }
+
+  .section-card {
+    padding: 40px 24px;
+  }
+
+  .about-catch {
+    font-size: 24px;
+  }
+
+  .business-card {
+    height: 240px;
+  }
+
+  .business-card-en {
+    font-size: 40px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .work-item-large {
+    grid-row: auto;
+    grid-column: 1 / -1;
+  }
+
+  .company-layout {
+    flex-direction: column;
+  }
+
+  .company-right {
+    flex: auto;
+    width: 100%;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-nav {
+    gap: 40px;
+  }
+
+  .btn-send {
+    width: 100%;
+  }
+
+  .deco {
+    display: none;
+  }
+}
