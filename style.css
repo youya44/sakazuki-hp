@@ -92,6 +92,7 @@ input, textarea {
   padding: 20px 40px;
   z-index: 1000;
   transition: background 0.3s;
+  mix-blend-mode: color-burn;
 }
 
 .header.scrolled {
@@ -260,9 +261,9 @@ input, textarea {
 .section-hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding-top: 0;
-  padding-bottom: 120px;
+  padding-bottom: 0;
 }
 
 .section-hero .section-inner {
