@@ -1,70 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>株式会社SAKAZUKI｜福岡のデザイン制作会社</title>
-  <meta name="description" content="株式会社SAKAZUKIは福岡の制作会社です。制作事業ではデザイン制作,WEB制作,映像制作を行なっています。またイベント事業では大小問わずイベントの企画から運営まで行います。">
-  <meta property="og:site_name" content="福岡のデザイン制作会社｜株式会社SAKAZUKI">
-  <meta property="og:title" content="株式会社SAKAZUKI｜福岡のデザイン制作会社">
-  <meta property="og:description" content="株式会社SAKAZUKIは福岡の制作会社です。制作事業ではデザイン制作,WEB制作,映像制作を行なっています。またイベント事業では大小問わずイベントの企画から運営まで行います。">
-  <meta property="og:type" content="website">
-  <link rel="icon" type="image/webp" href="assets/images/logo-icon.webp">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <!-- Splash Screen -->
-  <div class="splash" id="splash">
-    <div class="splash-logo">
-      <img src="assets/images/logo.webp" alt="SAKAZUKI">
-    </div>
-  </div>
-  <script>
-    setTimeout(function() {
-      var s = document.getElementById('splash');
-      if (s) s.classList.add('splash-hide');
-    }, 2500);
-    setTimeout(function() {
-      var s = document.getElementById('splash');
-      if (s) s.remove();
-    }, 3600);
-  </script>
-
-  <!-- Header -->
-  <header class="header" id="header">
-    <a href="/" class="header-logo">
-      <img src="assets/images/logo.webp" alt="SAKAZUKI">
-    </a>
-    <button class="header-menu" id="menuBtn" type="button" aria-label="メニュー">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-
-  <!-- Mobile Nav -->
-  <nav class="nav-overlay" id="navOverlay">
-    <div class="nav-inner">
-      <a href="#top" class="nav-link">TOP</a>
-      <a href="#about" class="nav-link">ABOUT</a>
-      <a href="#business" class="nav-link">BUSINESS</a>
-      <a href="#service" class="nav-link">SERVICE</a>
-      <a href="#work" class="nav-link">WORK</a>
-      <a href="#news" class="nav-link">NEWS</a>
-      <a href="#company" class="nav-link">COMPANY</a>
-      <a href="#contact" class="nav-link">CONTACT</a>
-    </div>
-  </nav>
-
-  <!-- Fixed Background Video -->
-  <video class="bg-video-fixed" autoplay muted loop playsinline>
-    <source src="assets/bg-video.mp4" type="video/mp4">
-  </video>
+<?php get_header(); ?>
 
   <main>
 
@@ -81,9 +15,9 @@
     <section class="section section-about" id="about">
       <div class="section-inner">
         <div class="section-deco-wrap">
-          <div class="section-deco deco-about-tr"><img src="assets/images/deco-1.webp" alt=""></div>
-          <div class="section-deco deco-about-bl"><img src="assets/images/deco-2.webp" alt=""></div>
-          <div class="section-deco deco-about-br"><img src="assets/images/deco-3.webp" alt=""></div>
+          <div class="section-deco deco-about-tr"><img src="<?php echo sakazuki_image('deco-1.webp'); ?>" alt=""></div>
+          <div class="section-deco deco-about-bl"><img src="<?php echo sakazuki_image('deco-2.webp'); ?>" alt=""></div>
+          <div class="section-deco deco-about-br"><img src="<?php echo sakazuki_image('deco-3.webp'); ?>" alt=""></div>
           <div class="section-card">
             <div class="section-header">
               <h2 class="section-title-en">ABOUT</h2>
@@ -110,20 +44,20 @@
           <p class="section-title-ja">事業内容</p>
         </div>
         <div class="section-deco-wrap">
-          <div class="section-deco deco-event-br"><img src="assets/images/deco-4.webp" alt=""></div>
+          <div class="section-deco deco-event-br"><img src="<?php echo sakazuki_image('deco-4.webp'); ?>" alt=""></div>
           <div class="business-cards">
-            <a href="creative.html" class="business-card">
+            <a href="<?php echo home_url('/creative/'); ?>" class="business-card">
               <div class="business-card-img">
-                <img src="assets/images/creative.jpg" alt="制作事業">
+                <img src="<?php echo sakazuki_image('creative.jpg'); ?>" alt="制作事業">
               </div>
               <div class="business-card-overlay">
                 <span class="business-card-en">CREATIVE</span>
                 <span class="business-card-ja">制作事業</span>
               </div>
             </a>
-            <a href="event.html" class="business-card">
+            <a href="<?php echo home_url('/event/'); ?>" class="business-card">
               <div class="business-card-img">
-                <img src="assets/images/event.webp" alt="イベント事業">
+                <img src="<?php echo sakazuki_image('event.webp'); ?>" alt="イベント事業">
               </div>
               <div class="business-card-overlay">
                 <span class="business-card-en">EVENT</span>
@@ -144,13 +78,13 @@
         </div>
         <div class="service-card">
           <div class="service-card-left">
-            <img src="assets/images/pass-screenshot.webp" alt="PASS" class="service-screenshot">
+            <img src="<?php echo sakazuki_image('pass-screenshot.webp'); ?>" alt="PASS" class="service-screenshot">
           </div>
           <div class="service-card-right">
             <p class="service-label">デザイン定額サービス</p>
-            <img src="assets/images/pass-logo.webp" alt="PASS" class="service-pass-logo">
+            <img src="<?php echo sakazuki_image('pass-logo.webp'); ?>" alt="PASS" class="service-pass-logo">
             <p class="service-desc">「PASS」とはデザイン制作を定額で頼み放題になるサービスです。<br>まるで自社の制作部のような、提案から制作まで一貫して行います。</p>
-            <a href="https://sakazuki.co.jp/pass" class="btn btn-primary" target="_blank">
+            <a href="https://pass.sakazuki.co.jp/" class="btn btn-primary" target="_blank">
               公式サイトへ <span class="material-symbols-outlined">keyboard_arrow_right</span>
             </a>
           </div>
@@ -166,24 +100,49 @@
           <p class="section-title-ja">制作事例</p>
         </div>
         <div class="work-grid">
-          <a href="work/genkai-don.html" class="work-item work-item-large">
-            <img src="assets/images/work1.webp" alt="玄海丼 ブランディング">
+          <?php
+          $work_query = new WP_Query(array(
+              'post_type'      => 'work',
+              'posts_per_page' => 5,
+              'orderby'        => 'date',
+              'order'          => 'DESC',
+          ));
+          $work_count = 0;
+          if ($work_query->have_posts()) :
+              while ($work_query->have_posts()) : $work_query->the_post();
+                  $work_count++;
+                  $class = ($work_count === 1) ? 'work-item work-item-large' : 'work-item';
+          ?>
+          <a href="<?php the_permalink(); ?>" class="<?php echo $class; ?>">
+            <?php if (has_post_thumbnail()) : ?>
+              <?php the_post_thumbnail('large', array('alt' => get_the_title())); ?>
+            <?php endif; ?>
           </a>
-          <a href="work/lapo-event.html" class="work-item">
-            <img src="assets/images/work2.webp" alt="lapo イベントポスター">
+          <?php
+              endwhile;
+              wp_reset_postdata();
+          else :
+              // Fallback: show static images if no posts yet
+          ?>
+          <a href="#" class="work-item work-item-large">
+            <img src="<?php echo sakazuki_image('work1.webp'); ?>" alt="制作事例">
           </a>
-          <a href="work/golden-route.html" class="work-item">
-            <img src="assets/images/work3.webp" alt="GOLDEN ROUTE TO WEST JAPAN">
+          <a href="#" class="work-item">
+            <img src="<?php echo sakazuki_image('work2.webp'); ?>" alt="制作事例">
           </a>
-          <a href="work/seikotsuin.html" class="work-item">
-            <img src="assets/images/work4.webp" alt="整骨院チラシ">
+          <a href="#" class="work-item">
+            <img src="<?php echo sakazuki_image('work3.webp'); ?>" alt="制作事例">
           </a>
-          <a href="work/iciem-kyoto.html" class="work-item">
-            <img src="assets/images/work5.webp" alt="ICIEM 2025 KYOTO">
+          <a href="#" class="work-item">
+            <img src="<?php echo sakazuki_image('work4.webp'); ?>" alt="制作事例">
           </a>
+          <a href="#" class="work-item">
+            <img src="<?php echo sakazuki_image('work5.webp'); ?>" alt="制作事例">
+          </a>
+          <?php endif; ?>
         </div>
         <div class="section-more">
-          <a href="work-all.html" class="btn-more">
+          <a href="<?php echo get_post_type_archive_link('work'); ?>" class="btn-more">
             VIEW MORE <span class="btn-more-circle"><span class="material-symbols-outlined">trending_flat</span></span>
           </a>
         </div>
@@ -194,35 +153,36 @@
     <section class="section section-news" id="news">
       <div class="section-inner">
         <div class="section-deco-wrap">
-          <div class="section-deco deco-news-l"><img src="assets/images/deco-5.webp" alt=""></div>
+          <div class="section-deco deco-news-l"><img src="<?php echo sakazuki_image('deco-5.webp'); ?>" alt=""></div>
           <div class="section-header">
             <h2 class="section-title-en">NEWS</h2>
             <p class="section-title-ja">お知らせ</p>
           </div>
           <div class="news-list">
-            <a href="news/intern-2024.html" class="news-item">
-              <time class="news-date">2024.08.22</time>
-              <p class="news-title">令和6年度夏季インターンシッププログラム開催しました。</p>
+            <?php
+            $news_query = new WP_Query(array(
+                'post_type'      => 'post',
+                'posts_per_page' => 5,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+            ));
+            if ($news_query->have_posts()) :
+                while ($news_query->have_posts()) : $news_query->the_post();
+            ?>
+            <a href="<?php the_permalink(); ?>" class="news-item">
+              <time class="news-date"><?php echo get_the_date('Y.m.d'); ?></time>
+              <p class="news-title"><?php the_title(); ?></p>
             </a>
-            <a href="news/security-action.html" class="news-item">
-              <time class="news-date">2023.10.31</time>
-              <p class="news-title">セキュリティアクション自己宣言一つ星を宣言しました。</p>
-            </a>
-            <a href="news/wellbeing-sdgs.html" class="news-item">
-              <time class="news-date">2023.10.31</time>
-              <p class="news-title">福岡市Well-Being＆SDGs登録制度に登録されました。</p>
-            </a>
-            <a href="news/sdgs-fukuoka.html" class="news-item">
-              <time class="news-date">2024.01.29</time>
-              <p class="news-title">福岡県SDGs登録制度の登録事業者として認定されました。</p>
-            </a>
-            <a href="news/hp-renewal.html" class="news-item">
-              <time class="news-date">2021.08.04</time>
-              <p class="news-title">HPをリニューアルしました。</p>
-            </a>
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+            ?>
+            <p style="text-align: center; color: #666;">お知らせはまだありません。</p>
+            <?php endif; ?>
           </div>
           <div class="section-more">
-            <a href="news-all.html" class="btn-more">
+            <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="btn-more">
               VIEW MORE <span class="btn-more-circle"><span class="material-symbols-outlined">trending_flat</span></span>
             </a>
           </div>
@@ -268,7 +228,7 @@
           </div>
           <div class="company-right">
             <div class="company-logo-card">
-              <img src="assets/images/logo.webp" alt="SAKAZUKI">
+              <img src="<?php echo sakazuki_image('logo.webp'); ?>" alt="SAKAZUKI">
             </div>
           </div>
         </div>
@@ -282,6 +242,12 @@
           <h2 class="section-title-en">CONTACT</h2>
           <p class="section-title-ja">お問合せ</p>
         </div>
+        <?php
+        // Contact Form 7 shortcode
+        if (shortcode_exists('contact-form-7')) {
+            echo do_shortcode('[contact-form-7 id="contact-form" title="お問い合わせ"]');
+        } else {
+        ?>
         <form class="contact-form" id="contactForm">
           <div class="form-group">
             <label for="company-name" class="form-label">Company</label>
@@ -306,36 +272,10 @@
           <p class="form-note">当サイトのフォームを利用した当社への売り込みの一切をお断りしています。</p>
           <button type="submit" class="btn-send">Send</button>
         </form>
+        <?php } ?>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <img src="assets/images/logo.webp" alt="SAKAZUKI" class="footer-logo">
-        <p class="footer-tagline">Take it easy, Make it better.</p>
-        <p class="footer-sub">We are a production company in Fukuoka, Japan.</p>
-      </div>
-      <nav class="footer-nav">
-        <div class="footer-nav-col">
-          <a href="recruit.html">RECRUIT</a>
-          <a href="#business">BUSINESS</a>
-          <a href="#service">SERVICES</a>
-          <a href="#work">WORK</a>
-        </div>
-        <div class="footer-nav-col">
-          <a href="#news">NEWS</a>
-          <a href="#company">COMPANY</a>
-          <a href="#contact">CONTACT</a>
-        </div>
-      </nav>
-    </div>
-    <p class="footer-copy">&copy; 2024 SAKAZUKI.Inc All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<?php get_footer(); ?>
