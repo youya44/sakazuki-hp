@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Scroll fade-in animations ---
-  const fadeEls = document.querySelectorAll('.section-header, .about-catch, .about-text, .business-card, .service-card, .work-grid, .news-item, .company-layout, .contact-form, .footer-inner, .icon-grid, .case-grid, .recruit-intro-content, .wanted-cards, .flow-steps, .conditions-list, .news-list, .work-filter');
+  const fadeEls = document.querySelectorAll('.section-header, .about-catch, .about-text, .business-card, .service-card, .news-item, .company-layout, .contact-form, .footer-inner, .icon-grid, .case-grid, .recruit-intro-content, .wanted-cards, .flow-steps, .conditions-list, .news-list');
 
   fadeEls.forEach(el => el.classList.add('fade-in'));
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: 0.1,
+    threshold: 0.01,
     rootMargin: '0px 0px -50px 0px'
   });
 
