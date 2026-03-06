@@ -4,7 +4,7 @@ Theme URI: https://sakazuki.co.jp
 Author: SAKAZUKI Inc.
 Author URI: https://sakazuki.co.jp
 Description: 株式会社SAKAZUKIコーポレートサイト用WordPressテーマ
-Version: 1.2.0
+Version: 1.2.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sakazuki
@@ -1681,26 +1681,34 @@ input, textarea {
 
 .wpcf7-response-output {
   text-align: center;
+  font-family: 'Anuphan', sans-serif;
   font-size: 14px;
-  padding: 16px;
-  margin: 24px 0 0;
-  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 20px 24px;
+  margin: 32px 0 0;
+  border: 1.5px solid #000;
+  border-radius: 0;
+  color: #000;
+  background: transparent;
 }
 
 /* Success message */
 .wpcf7-form.sent .wpcf7-response-output {
-  border-color: #00d4aa;
-  color: #00d4aa;
-  background: rgba(0, 212, 170, 0.08);
+  border: 1.5px solid #000 !important;
+  color: #000;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
 }
 
 /* Error message */
 .wpcf7-form.invalid .wpcf7-response-output,
 .wpcf7-form.unaccepted .wpcf7-response-output,
 .wpcf7-form.failed .wpcf7-response-output {
-  border-color: #e74c3c;
+  border: 1.5px solid #000 !important;
   color: #e74c3c;
-  background: rgba(231, 76, 60, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
 }
 
 /* CF7 spinner */
