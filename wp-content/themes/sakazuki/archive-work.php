@@ -42,9 +42,12 @@
           if ($work_query->have_posts()) :
               while ($work_query->have_posts()) : $work_query->the_post();
                   $terms = get_the_terms(get_the_ID(), 'work_category');
-                  $cat_slug = ($terms && !is_wp_error($terms)) ? $terms[0]->slug : '';
+                  $cat_slugs = '';
+                  if ($terms && !is_wp_error($terms)) {
+                      $cat_slugs = implode(' ', wp_list_pluck($terms, 'slug'));
+                  }
           ?>
-          <a href="<?php the_permalink(); ?>" class="work-item" data-category="<?php echo esc_attr($cat_slug); ?>">
+          <a href="<?php the_permalink(); ?>" class="work-item" data-category="<?php echo esc_attr($cat_slugs); ?>">
             <?php if (has_post_thumbnail()) : ?>
               <?php the_post_thumbnail('large', array('alt' => get_the_title())); ?>
             <?php endif; ?>

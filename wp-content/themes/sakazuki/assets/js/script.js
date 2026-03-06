@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const items = workGrid.querySelectorAll('.work-item');
 
         items.forEach(item => {
-          if (filter === 'all' || item.dataset.category === filter) {
+          const cats = item.dataset.category ? item.dataset.category.split(' ') : [];
+          if (filter === 'all' || cats.includes(filter)) {
             item.style.display = 'block';
           } else {
             item.style.display = 'none';

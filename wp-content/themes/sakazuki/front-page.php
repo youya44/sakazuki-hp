@@ -245,7 +245,7 @@
         <?php
         // Contact Form 7 shortcode
         if (shortcode_exists('contact-form-7')) {
-            echo do_shortcode('[contact-form-7 id="contact-form" title="お問い合わせ"]');
+            echo do_shortcode('[contact-form-7 id="8f58f7a" title="お問い合わせ"]');
         } else {
         ?>
         <form class="contact-form" id="contactForm">

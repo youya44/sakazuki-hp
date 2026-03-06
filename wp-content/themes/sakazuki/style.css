@@ -4,7 +4,7 @@ Theme URI: https://sakazuki.co.jp
 Author: SAKAZUKI Inc.
 Author URI: https://sakazuki.co.jp
 Description: 株式会社SAKAZUKIコーポレートサイト用WordPressテーマ
-Version: 1.0.0
+Version: 1.2.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sakazuki
@@ -1617,5 +1617,101 @@ input, textarea {
 
   .single-content h2 {
     font-size: 1.1rem;
+  }
+}
+
+/* =============================================
+   Contact Form 7 Overrides
+   ============================================= */
+
+/* CF7 form wrapper — match .contact-form */
+.wpcf7 {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Reset CF7 default paragraph spacing */
+.wpcf7-form p {
+  margin: 0;
+}
+
+/* Ensure CF7 input wrappers fill width */
+.wpcf7-form-control-wrap {
+  display: block;
+}
+
+/* CF7 inputs already get .form-input / .form-textarea via class: tag,
+   but reset CF7 defaults just in case */
+.wpcf7-form .form-input,
+.wpcf7-form .form-textarea {
+  box-sizing: border-box;
+}
+
+/* CF7 acceptance (privacy checkbox) — align with .form-check */
+.wpcf7-form .form-check .wpcf7-form-control-wrap {
+  display: inline;
+}
+
+.wpcf7-form .form-check .wpcf7-list-item {
+  margin: 0;
+}
+
+.wpcf7-form .form-check .wpcf7-list-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* CF7 submit button — already gets .btn-send via class: tag */
+.wpcf7-form .wpcf7-submit {
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* CF7 validation messages */
+.wpcf7-not-valid-tip {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 6px;
+  display: block;
+}
+
+.wpcf7-response-output {
+  text-align: center;
+  font-size: 14px;
+  padding: 16px;
+  margin: 24px 0 0;
+  border-radius: 8px;
+}
+
+/* Success message */
+.wpcf7-form.sent .wpcf7-response-output {
+  border-color: #00d4aa;
+  color: #00d4aa;
+  background: rgba(0, 212, 170, 0.08);
+}
+
+/* Error message */
+.wpcf7-form.invalid .wpcf7-response-output,
+.wpcf7-form.unaccepted .wpcf7-response-output,
+.wpcf7-form.failed .wpcf7-response-output {
+  border-color: #e74c3c;
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.08);
+}
+
+/* CF7 spinner */
+.wpcf7-spinner {
+  display: block;
+  margin: 16px auto 0;
+}
+
+/* Responsive: btn-send width on mobile */
+@media (max-width: 768px) {
+  .wpcf7-form .btn-send {
+    width: 100%;
   }
 }
