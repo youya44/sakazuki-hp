@@ -150,7 +150,7 @@ function sakazuki_ogp_tags() {
     $site_name   = '株式会社SAKAZUKI';
     $default_title = '福岡のデザイン制作会社｜株式会社SAKAZUKI';
     $default_desc  = '株式会社SAKAZUKIは福岡の制作会社です。制作事業ではデザイン制作、WEB制作、映像制作を行なっています。またイベント事業では大小問わずイベントの企画から運営まで行います。';
-    $default_image = sakazuki_image('logo.webp');
+    $default_image = sakazuki_image('og-image.jpg');
     $og_type = 'website';
 
     // ページ別の設定
