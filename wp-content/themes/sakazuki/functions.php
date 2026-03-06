@@ -144,3 +144,100 @@ function sakazuki_image($filename) {
 function sakazuki_asset($path) {
     return get_template_directory_uri() . '/assets/' . $path;
 }
+
+// ===== OGP Meta Tags =====
+function sakazuki_ogp_tags() {
+    $site_name   = '株式会社SAKAZUKI';
+    $default_title = '福岡のデザイン制作会社｜株式会社SAKAZUKI';
+    $default_desc  = '株式会社SAKAZUKIは福岡の制作会社です。制作事業ではデザイン制作、WEB制作、映像制作を行なっています。またイベント事業では大小問わずイベントの企画から運営まで行います。';
+    $default_image = sakazuki_image('logo.webp');
+    $og_type = 'website';
+
+    // ページ別の設定
+    if (is_front_page()) {
+        $og_title = $default_title;
+        $og_desc  = $default_desc;
+        $og_image = $default_image;
+        $og_url   = home_url('/');
+    } elseif (is_singular('work')) {
+        $og_type  = 'article';
+        $og_title = get_the_title() . '｜' . $site_name;
+        $og_desc  = sakazuki_get_ogp_description();
+        $og_image = sakazuki_get_ogp_image($default_image);
+        $og_url   = get_permalink();
+    } elseif (is_singular()) {
+        $og_title = get_the_title() . '｜' . $site_name;
+        $og_desc  = sakazuki_get_ogp_description();
+        $og_image = sakazuki_get_ogp_image($default_image);
+        $og_url   = get_permalink();
+    } elseif (is_post_type_archive('work')) {
+        $og_title = '制作事例一覧｜' . $site_name;
+        $og_desc  = 'SAKAZUKIの制作事例一覧です。Webサイト制作、デザイン制作、映像制作など幅広い実績をご覧いただけます。';
+        $og_image = $default_image;
+        $og_url   = get_post_type_archive_link('work');
+    } elseif (is_tax('work_category')) {
+        $term = get_queried_object();
+        $og_title = $term->name . 'の制作事例｜' . $site_name;
+        $og_desc  = $term->name . 'カテゴリの制作事例一覧です。';
+        $og_image = $default_image;
+        $og_url   = get_term_link($term);
+    } else {
+        $og_title = $default_title;
+        $og_desc  = $default_desc;
+        $og_image = $default_image;
+        $og_url   = home_url('/');
+    }
+
+    // 出力
+    echo "\n<!-- OGP -->\n";
+    echo '<meta property="og:site_name" content="' . esc_attr($site_name) . '">' . "\n";
+    echo '<meta property="og:locale" content="ja_JP">' . "\n";
+    echo '<meta property="og:type" content="' . esc_attr($og_type) . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr($og_title) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($og_desc) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($og_url) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($og_image) . '">' . "\n";
+
+    // Twitter Card
+    echo "\n<!-- Twitter Card -->\n";
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($og_title) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($og_desc) . '">' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url($og_image) . '">' . "\n";
+
+    // Meta Description
+    echo "\n<!-- SEO -->\n";
+    echo '<meta name="description" content="' . esc_attr($og_desc) . '">' . "\n";
+}
+add_action('wp_head', 'sakazuki_ogp_tags');
+
+// OGP用: description取得ヘルパー
+function sakazuki_get_ogp_description() {
+    $default_desc = '株式会社SAKAZUKIは福岡の制作会社です。制作事業ではデザイン制作、WEB制作、映像制作を行なっています。またイベント事業では大小問わずイベントの企画から運営まで行います。';
+
+    if (has_excerpt()) {
+        return wp_strip_all_tags(get_the_excerpt());
+    }
+
+    $content = get_the_content();
+    $content = wp_strip_all_tags(strip_shortcodes($content));
+    $content = str_replace(array("\r\n", "\r", "\n"), ' ', $content);
+    $content = trim($content);
+
+    if ($content) {
+        return mb_substr($content, 0, 120) . (mb_strlen($content) > 120 ? '...' : '');
+    }
+
+    return $default_desc;
+}
+
+// OGP用: 画像取得ヘルパー
+function sakazuki_get_ogp_image($default) {
+    if (has_post_thumbnail()) {
+        $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+        if ($thumb) {
+            return $thumb[0];
+        }
+    }
+    return $default;
+}
